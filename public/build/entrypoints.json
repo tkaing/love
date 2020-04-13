@@ -1,0 +1,42 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~page1~page2.js",
+        "/build/vendors~app~page2.js",
+        "/build/vendors~app.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/vendors~app.css",
+        "/build/app.css"
+      ]
+    },
+    "page1": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~page1~page2.js",
+        "/build/vendors~page1~page2.js",
+        "/build/vendors~page1.js",
+        "/build/page1.js"
+      ],
+      "css": [
+        "/build/page1.css"
+      ]
+    },
+    "page2": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~page1~page2.js",
+        "/build/vendors~page1~page2.js",
+        "/build/vendors~app~page2.js",
+        "/build/vendors~page2.js",
+        "/build/page2.js"
+      ],
+      "css": [
+        "/build/page2.css"
+      ]
+    }
+  }
+}

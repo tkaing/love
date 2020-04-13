@@ -1,0 +1,18 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/page1.css": "/build/page1.css",
+  "build/page1.js": "/build/page1.js",
+  "build/page2.css": "/build/page2.css",
+  "build/page2.js": "/build/page2.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors~app.css": "/build/vendors~app.css",
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/vendors~app~page1~page2.js": "/build/vendors~app~page1~page2.js",
+  "build/vendors~page1.js": "/build/vendors~page1.js",
+  "build/images/animal-crossing.jpg": "/build/images/animal-crossing.fbdcc2a9.jpg",
+  "build/vendors~app~page2.js": "/build/vendors~app~page2.js",
+  "build/vendors~page2.js": "/build/vendors~page2.js",
+  "build/vendors~app~page1.js": "/build/vendors~app~page1.js",
+  "build/vendors~page1~page2.js": "/build/vendors~page1~page2.js"
+}
