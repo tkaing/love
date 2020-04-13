@@ -10,6 +10,9 @@
     text-align: center;
     width: 100%;
 }
+.headline svg {
+    font-size: 2em;
+}
 .carousel-inner, .carousel-item {
     height: 100%;
 }
