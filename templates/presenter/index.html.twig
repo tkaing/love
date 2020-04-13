@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('page1') }}
+{% endblock %}
+
+{% block body %}
+
+    <section id="headline-carousel" class="headline carousel slide row">
+        <div class="col-3">
+            <!-- Left controls -->
+            {% set presenter_prev = path('presenter', {'presenter': presenter, 'dir': -1 }) %}
+            <a class="carousel-control-prev" href="{{ presenter_prev }}">
+                <i class="fas fa-chevron-left text-secondary"></i>
+            </a>
+        </div>
+        <div class="col-6">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <h3>{{ presenter == 0 ? 'Naissance d\'un couple' }}</h3>
+                        <h3>{{ presenter == 1 ? '1 an de bonheur' }}</h3>
+                        <h3>{{ presenter >= 2 ? presenter ~ ' ans de bonheur' }}</h3>
+                    </div>
+                </div>
+            </div>
+        <div class="col-3">
+            <!-- Right controls -->
+            {% set presenter_next = path('presenter', {'presenter': presenter, 'dir': +1 }) %}
+            <a class="carousel-control-next" href="{{ presenter_next }}">
+                <i class="fas fa-chevron-right text-secondary"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="content row">
+        <!-- Button trigger modal -->
+        <a href="{{ path('presenter-show', {'presenter': presenter, 'show': 0 }) }}" class="content-item col-6">
+            <div class="h-100 text-primary text-center">
+                {% set image = asset('build/images/animal-crossing.fbdcc2a9.jpg') %}
+                {% set rotation = random(-10, 10) ~ 'deg' %}
+                <div class="h-50 content-item-frame"
+                     style="transform: rotate({{ rotation }});background-image: url({{ image }})">
+                </div>
+                <h5>Ajouter</h5>
+                <h6>{{ date('now').format('j M Y') }}</h6>
+            </div>
+        </a>
+        {% for album in albums %}
+            <a href="{{ path('presenter-show', {'presenter': presenter, 'show': album.id }) }}" class="content-item col-6">
+                <div class="h-100 text-primary text-center">
+                    {% set image = asset('build/images/animal-crossing.fbdcc2a9.jpg') %}
+                    {% set rotation = random(-10, 10) ~ 'deg' %}
+                    <div class="h-50 content-item-frame"
+                         style="transform: rotate({{ rotation }});background-image: url({{ image }})">
+                    </div>
+                    <h5>{{ album.title }}</h5>
+                    <h6>{{ album.creation.format('j M Y') }}</h6>
+                </div>
+            </a>
+        {% endfor %}
+    </section>
+
+    <section id="subject-carousel" class="subject carousel slide row">
+        <div class="col-3">
+                <!-- Left controls -->
+                <a class="carousel-control-prev" href="#subject-carousel">
+                    <i class="fas fa-chevron-left text-secondary"></i>
+                </a>
+            </div>
+        <div class="col-6">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <h3>❤️</h3>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>🎥</h3>
+                    </div>
+                </div>
+            </div>
+        <div class="col-3">
+                <!-- Right controls -->
+                <a class="carousel-control-next" href="#subject-carousel">
+                    <i class="fas fa-chevron-right text-secondary"></i>
+                </a>
+            </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('page1') }}
+{% endblock %}

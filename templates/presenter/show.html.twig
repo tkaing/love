@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('page2') }}
+{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('form-presenter-show', {'presenter': presenter, 'show': show }) }}">
+        <section class="headline row">
+            <div class="col-3">
+                {% set go_presenter = path('presenter', {'presenter': presenter, 'dir': 0 }) %}
+                <a href="{{ go_presenter }}" class="control-prev h-100 text-secondary">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </div>
+            <div class="col-6">
+                {% if show != 0 %}
+                    {% set go_remove = path('form-presenter-show-remove', {'presenter': presenter, 'id': show }) %}
+                    <a href="#" data-href="{{ go_remove }}" class="control-remove h-100 text-secondary">
+                        <i class="far fa-trash-alt"></i>
+                    </a>
+                {% else %}
+                    <h3>Ajouter un album</h3>
+                {% endif %}
+            </div>
+            <div class="col-3"></div>
+        </section>
+
+        <section class="content">
+
+            {% set title = show != 0 ? album.title %}
+            <input type="text" placeholder="Donne un titre"
+                   class="title text-primary w-100" value="{{ title }}" required>
+
+            <section class="actions row">
+                <div class="col-6">
+                    <button type="button" class="action-item btn btn-outline-primary" disabled>
+                        <span>Gallerie</span>
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="action-item btn btn-outline-primary active">
+                        <span>Séjour</span>
+                    </button>
+                </div>
+            </section>
+
+            {% set creation = show == 0 ? date('now') : album.creation %}
+            <input type="date"
+                   class="creation form-control" value="{{ creation.format('Y-m-d') }}"
+                   min="{{ birthday.format('Y-m-d') }}" max="{{ date('now').format('Y-m-d') }}" required>
+
+            <section class="details">
+                <div class="details-photo h-100 d-none">
+
+                </div>
+                <div class="details-gallery row h-100 d-none">
+                    {% set photos = [] %}
+                    {% if photos|length < 10 %}
+                        {% for i in 1..(10 - photos|length) %}
+                            <div class="details-gallery-item col-4"></div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {% set description = show != 0 ? album.description %}
+                <textarea placeholder="Décris moi ton séjour"
+                          class="h-100 form-control details-description">{{ description }}</textarea>
+            </section>
+
+            <section class="options row d-none">
+                <div class="col-12">
+                    <button type="button" class="action-item btn btn-primary d-none">
+                        <i class="fas fa-image"></i>
+                        <span>Ajouter une photo</span>
+                    </button>
+                    <button type="button" class="action-item btn btn-danger d-none">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Supprimer une photo</span>
+                    </button>
+                </div>
+            </section>
+        </section>
+
+        <section class="footer row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <!-- Save controls -->
+                <button type="submit" class="w-100 h-100 border-0">
+                    <i class="fas fa-check-circle text-success"></i>
+                </button>
+            </div>
+            <div class="col-3"></div>
+        </section>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('page2') }}
+{% endblock %}

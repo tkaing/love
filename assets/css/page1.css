@@ -1,0 +1,43 @@
+.headline, .subject {
+    height: 20vh;
+}
+.headline h3, .subject h3 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+.carousel-inner, .carousel-item {
+    height: 100%;
+}
+.carousel-control-prev, .carousel-control-next {
+    width: 100%;
+}
+.content {
+    height: 60vh;
+    overflow-y: scroll;
+}
+.content-item {
+    height: 35%;
+    margin-top: 45px;
+    cursor: pointer;
+}
+.content-item h5 {
+    margin: 25px auto 0;
+}
+.content-item h6 {
+    margin: 5px auto 0;
+}
+.content-item:focus, .content-item:hover {
+    text-decoration: none;
+}
+.content-item-frame {
+    width: 80%;
+    margin: 0 auto;
+    background-size: 150%;
+    background-position: center;
+    border: 4px solid #1A4888;
+}
